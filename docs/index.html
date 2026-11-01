@@ -221,7 +221,7 @@
       <h2>インストールのしかた</h2>
       <ol class="steps">
         <li>上のボタンから <code>ZealousSetup.exe</code> をダウンロードして、開きます。</li>
-        <li>「WindowsによってPCが保護されました」と出たときは、<b>「詳細情報」→「実行」</b>を押します（まだ電子署名を付けていないため表示されます）。</li>
+        <li>「WindowsによってPCが保護されました」と出たときは、<b>「詳細情報」→「実行」</b>を押します。</li>
         <li>案内に沿って進めると、はじめての起動でAI・読み上げ・音声認識の部品を自動で準備します（回線によって数分〜数十分）。</li>
       </ol>
       <p class="note">2回目からは、Zealous の中の「更新」ボタンで新しい版に更新できます。</p>
@@ -260,14 +260,6 @@
       <div id="history"><p class="note">読み込んでいます…</p></div>
     </section>
 
-    <section>
-      <details>
-        <summary>ダウンロードしたファイルが本物か確かめる（上級者向け）</summary>
-        <p class="note">ダウンロードした場所で PowerShell を開き、次を実行して、表示された値が下の値と同じなら本物です。</p>
-        <pre><code>Get-FileHash .\ZealousSetup.exe -Algorithm SHA256</code></pre>
-        <span class="hash" id="sha">—</span>
-      </details>
-    </section>
   </main>
 
   <footer>
@@ -281,7 +273,6 @@
   fetch("latest.json", {cache: "no-store"}).then(r => r.json()).then(v => {
     document.getElementById("dl-sub").textContent = `v${v.version}・${mb(v.size)}・無料`;
     document.getElementById("meta").innerHTML = `最新版 <b>v${esc(v.version)}</b>（${esc(v.date)} 公開）　·　Windows 10 / 11（64ビット）`;
-    document.getElementById("sha").textContent = v.sha256;
   }).catch(() => {});
   // Catalys+ は、専用のページからダウンロードしてもらう(ここでは最新版の番号だけを添える)
   fetch("https://hiirocreate.github.io/catalys-plus-releases/latest.json", {cache: "no-store"}).then(r => r.json()).then(v => {
