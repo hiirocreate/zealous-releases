@@ -124,6 +124,7 @@
   .sib .go { display: inline-block; background: #f97316; color: #fff; text-decoration: none; font-weight: 700;
              border-radius: 12px; padding: 10px 22px; }
   .sib .go:hover { background: #ea580c; }
+  .sib .soon:empty { display: none; }  /* 最新版の番号を読み込むまでは出さない */
   .sib .go[hidden] { display: none; }  /* 公開前はボタンを出さない(display 指定が hidden を上書きしないように) */
   .sib .soon { display: inline-block; color: var(--sub); font-size: 13px; }
   .sib .go:not([hidden]) + .soon { margin-left: 12px; }
