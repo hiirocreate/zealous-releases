@@ -1,13 +1,14 @@
 {
  "list": {
   "v": 1,
-  "updated": "2026-11-01T12:06:24+00:00",
+  "updated": "2026-11-01T12:20:53+00:00",
   "revoked": [
-   "c10a7b46"
+   "c10a7b46",
+   "e81f83b2"
   ],
   "expire_all_after": null,
   "disable_all": false,
   "limits": {}
  },
- "sig": "nwrFgIy8T2B9QRQVh6PUn6aTKRMTS0QD0cVZwMujMSq5Is1FTEWIQH4V0bHkmx5qhpdvgUr6eaKkjn5UxIvCBg=="
+ "sig": "ynEPX/hjIxdTgODnn9x4P+Gq1DwNTqOgkUyoe7jzAUswkZbPDMe1qqHCM8DvJkjVVD4ji56dKB42FAfGsF/DDg=="
 }
