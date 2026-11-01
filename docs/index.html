@@ -76,7 +76,11 @@
   .sib .go { display: inline-block; background: #f97316; color: #fff; text-decoration: none; font-weight: 700;
              border-radius: 12px; padding: 10px 22px; }
   .sib .go:hover { background: #ea580c; }
-  .sib .soon { color: var(--sub); font-size: 13px; margin-left: 10px; }
+  .sib .go[hidden] { display: none; }  /* 公開前はボタンを出さない(display 指定が hidden を上書きしないように) */
+  .sib .soon { display: inline-block; color: var(--sub); font-size: 13px; }
+  .sib .go:not([hidden]) + .soon { margin-left: 12px; }
+  .sib .soon.wait { color: #fbbf24; background: rgba(251, 191, 36, .1); border: 1px solid rgba(251, 191, 36, .35);
+                    border-radius: 999px; padding: 4px 14px; font-weight: 600; }
   @media (max-width: 640px) { .sib { flex-direction: column; text-align: center; } .sib ul { text-align: left; } }
   /* ---- 更新履歴 ---- */
   .rel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-bottom: 12px; }
@@ -161,7 +165,7 @@
             <li><b>学習</b>：プログラミングの課題を出し、書いたコードを答え合わせ（答えではなくヒントで導く）</li>
           </ul>
           <p class="note">Zealous が入っていれば、AI のソフトとモデルを共用するので追加のダウンロードが少なくて済みます。</p>
-          <a class="go" id="cat-dl" href="#" hidden></a><span class="soon" id="cat-meta">近日公開予定です</span>
+          <a class="go" id="cat-dl" href="#" hidden></a><span class="soon wait" id="cat-meta">近日公開予定</span>
         </div>
       </div>
     </section>
@@ -200,6 +204,7 @@
     a.href = v.url;
     a.hidden = false;
     a.textContent = `Catalys+ をダウンロード（v${v.version}）`;
+    document.getElementById("cat-meta").classList.remove("wait");
     document.getElementById("cat-meta").textContent = `${mb(v.size)}・無料　·　`;
     const more = document.createElement("a");
     more.href = "https://hiirocreate.github.io/catalys-plus-releases/";
