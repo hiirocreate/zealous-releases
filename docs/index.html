@@ -66,6 +66,18 @@
   table.req th, table.req td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); font-size: 14px; }
   table.req th { width: 30%; color: var(--sub); font-weight: 600; }
   table.req tr:last-child th, table.req tr:last-child td { border-bottom: 0; }
+  /* ---- 兄弟ツール ---- */
+  .sib { display: flex; gap: 22px; align-items: center; background: var(--surface); border: 1px solid #5a3416;
+         border-radius: 16px; padding: 20px 22px; }
+  .sib img { width: 120px; height: 120px; flex: none; }
+  .sib h3 { margin: 0 0 4px; font-size: 20px; color: #fbbf24; }
+  .sib p { margin: 0 0 6px; color: var(--sub); font-size: 14px; }
+  .sib ul { margin: 6px 0 12px; padding-left: 1.2em; color: var(--sub); font-size: 14px; }
+  .sib .go { display: inline-block; background: #f97316; color: #fff; text-decoration: none; font-weight: 700;
+             border-radius: 12px; padding: 10px 22px; }
+  .sib .go:hover { background: #ea580c; }
+  .sib .soon { color: var(--sub); font-size: 13px; margin-left: 10px; }
+  @media (max-width: 640px) { .sib { flex-direction: column; text-align: center; } .sib ul { text-align: left; } }
   /* ---- 更新履歴 ---- */
   .rel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-bottom: 12px; }
   .rel header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin-bottom: 6px; }
@@ -136,6 +148,24 @@
       </table>
     </section>
 
+    <section id="catalys">
+      <h2>兄弟ツール Catalys+（カタリス）</h2>
+      <div class="sib">
+        <img src="catalys_emblem.png" alt="Catalys+">
+        <div>
+          <h3>コードを書く・Webサイトを直すなら Catalys+</h3>
+          <p>Zealous と同じく、AI は自分のPCの中だけで動きます。目標を渡すと、手順を立てて、作って、動かして、確かめます。</p>
+          <ul>
+            <li><b>開発</b>：Python・JavaScript/TypeScript・PHP・Go・Ruby・C#・HTML/CSS のコードを直し、テストで確かめる</li>
+            <li><b>HP管理</b>：FileZilla と連携してサイトを取り込み、AI で修正 → 確認して公開。いつでも元に戻せる</li>
+            <li><b>学習</b>：プログラミングの課題を出し、書いたコードを答え合わせ（答えではなくヒントで導く）</li>
+          </ul>
+          <p class="note">Zealous が入っていれば、AI のソフトとモデルを共用するので追加のダウンロードが少なくて済みます。</p>
+          <a class="go" id="cat-dl" href="#" hidden></a><span class="soon" id="cat-meta">近日公開予定です</span>
+        </div>
+      </div>
+    </section>
+
     <section>
       <h2>更新履歴</h2>
       <div id="history"><p class="note">読み込んでいます…</p></div>
@@ -163,6 +193,18 @@
     document.getElementById("dl-sub").textContent = `v${v.version}・${mb(v.size)}・無料`;
     document.getElementById("meta").innerHTML = `最新版 <b>v${esc(v.version)}</b>（${esc(v.date)} 公開）　·　Windows 10 / 11（64ビット）`;
     document.getElementById("sha").textContent = v.sha256;
+  }).catch(() => {});
+  // Catalys+ の最新版(公開されていれば、直接ダウンロードできるようにする)
+  fetch("https://hiirocreate.github.io/catalys-plus-releases/latest.json", {cache: "no-store"}).then(r => r.json()).then(v => {
+    const a = document.getElementById("cat-dl");
+    a.href = v.url;
+    a.hidden = false;
+    a.textContent = `Catalys+ をダウンロード（v${v.version}）`;
+    document.getElementById("cat-meta").textContent = `${mb(v.size)}・無料　·　`;
+    const more = document.createElement("a");
+    more.href = "https://hiirocreate.github.io/catalys-plus-releases/";
+    more.textContent = "詳しく";
+    document.getElementById("cat-meta").appendChild(more);
   }).catch(() => {});
   fetch("releases.json", {cache: "no-store"}).then(r => r.json()).then(list => {
     const box = document.getElementById("history");
