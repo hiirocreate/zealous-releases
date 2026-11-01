@@ -249,7 +249,7 @@
             <li><b>学習</b>：プログラミングの課題を出し、書いたコードを答え合わせ（答えではなくヒントで導く）</li>
           </ul>
           <p class="note">Zealous が入っていれば、AI のソフトとモデルを共用するので追加のダウンロードが少なくて済みます。</p>
-          <a class="go" id="cat-dl" href="#" hidden></a><span class="soon wait" id="cat-meta">近日公開予定</span>
+          <a class="go" id="cat-dl" href="https://hiirocreate.github.io/catalys-plus-releases/">Catalys+ のページへ</a><span class="soon wait" id="cat-meta"></span>
         </div>
       </div>
     </section>
@@ -282,18 +282,11 @@
     document.getElementById("meta").innerHTML = `最新版 <b>v${esc(v.version)}</b>（${esc(v.date)} 公開）　·　Windows 10 / 11（64ビット）`;
     document.getElementById("sha").textContent = v.sha256;
   }).catch(() => {});
-  // Catalys+ の最新版(公開されていれば、直接ダウンロードできるようにする)
+  // Catalys+ は、専用のページからダウンロードしてもらう(ここでは最新版の番号だけを添える)
   fetch("https://hiirocreate.github.io/catalys-plus-releases/latest.json", {cache: "no-store"}).then(r => r.json()).then(v => {
-    const a = document.getElementById("cat-dl");
-    a.href = v.url;
-    a.hidden = false;
-    a.textContent = `Catalys+ をダウンロード（v${v.version}）`;
-    document.getElementById("cat-meta").classList.remove("wait");
-    document.getElementById("cat-meta").textContent = `${mb(v.size)}・無料　·　`;
-    const more = document.createElement("a");
-    more.href = "https://hiirocreate.github.io/catalys-plus-releases/";
-    more.textContent = "詳しく";
-    document.getElementById("cat-meta").appendChild(more);
+    const meta = document.getElementById("cat-meta");
+    meta.classList.remove("wait");
+    meta.textContent = `最新版 v${v.version}`;
   }).catch(() => {});
   fetch("releases.json", {cache: "no-store"}).then(r => r.json()).then(list => {
     const box = document.getElementById("history");
