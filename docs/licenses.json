@@ -1,10 +1,11 @@
 {
  "list": {
   "v": 1,
-  "updated": "2026-11-04T01:27:20+00:00",
+  "updated": "2026-11-04T01:27:36+00:00",
   "revoked": [
    "38e835b0",
    "3cf52a67",
+   "7282f6d1",
    "c10a7b46",
    "e81f83b2",
    "fbd07e1a"
@@ -16,5 +17,5 @@
    "9a8bef86452adceff656": "eyJpZCI6ImQxMTI1OTY1IiwibmFtZSI6ImhpaXJvIiwibWFjaGluZSI6IkU0NjItMzNBMC1ENUQxLTc4MTciLCJleHAiOiIyMDI3LTA0LTMwIiwiaWF0IjoiMjAyNi0xMS0wMSJ9.IZ0VUXfiQP_jO_ZSFw34YMdKskCxoUdmrrUXg23tuF38adihex1XQ_T8nH3M0zOy_7Y_3yPhnc59uvbkCFNGCw"
   }
  },
- "sig": "TEj03CJcOAFY17RzjuMU3tzjeNzFP4BAAN9jjFXeidSiFh0HkqAAk0wF/Cnyarcd1ToswV5RaICrifFR5JTOAg=="
+ "sig": "kjLwSPkYpzo5j6N9HbHQP/1pOWPSwSZ9Z4EhCSol9aFsaagzEqeqzv4K62LKuaCDTk9R4+y4An8KtiwlUuwPDA=="
 }
